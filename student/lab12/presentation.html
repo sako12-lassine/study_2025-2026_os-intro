@@ -1,0 +1,78 @@
+<h1 id="лабораторная-работа-12">Лабораторная работа №12</h1>
+<h2 id="цель-работы">1. Цель работы</h2>
+<p>Изучение основ программирования в оболочке Bash.</p>
+<h2 id="задачи">2. Задачи</h2>
+<ul>
+<li>Создание скрипта резервного копирования (backup.sh)</li>
+<li>Обработка аргументов командной строки (args.sh)</li>
+<li>Создание аналога команды ls (myls.sh)</li>
+<li>Подсчёт файлов по расширению (count.sh)</li>
+</ul>
+<h2 id="ход-выполнения-работы">3. Ход выполнения работы</h2>
+<p><strong>3.1. Скрипт backup.sh</strong> #!/bin/bash
+BACKUP_DIR=~/backup mkdir -p B A C K U P D I R t a r − c z f BACKUP D ​
+IRtar−czfBACKUP_DIR/backup_ ( d a t e + (date+0</p>
+<p>text</p>
+<p><strong>3.2. Скрипт args.sh</strong> #!/bin/bash echo Количество
+аргументов: # for arg in @; do echo - $arg done</p>
+<p>text</p>
+<p><strong>3.3. Скрипт myls.sh</strong> #!/bin/bash DIR= 1 : − . f o r f
+i l e i n 1:−.forfileinDIR/*; do if [ -f f i l e] ; t h e n [ − r
+file];then[−rfile ] &amp;&amp; echo -n r || echo -n - [ -w file ]
+&amp;&amp; echo -n w || echo -n - [ -x file ] &amp;&amp; echo -n x ||
+echo -n - echo ( b a s e n a m e (basenamefile) elif [ -d f i l e] ; t h
+e n e c h o d file];thenechod(basename $file)/ fi done</p>
+<p>text</p>
+<p><strong>3.4. Скрипт count.sh</strong> #!/bin/bash count= ( f i n d
+(find2 -type f -name “* 1 ” 2 &gt; / d e v / n u l l ∣ w c − l ) e c h o
+Количествофайлов : 1”2&gt;/dev/null∣wc−l)echoКоличествофайлов:count</p>
+<p>text</p>
+<h2 id="результаты">4. Результаты</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Скрипт</th>
+<th>Результат</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>backup.sh</td>
+<td>Архив создан</td>
+</tr>
+<tr class="even">
+<td>args.sh</td>
+<td>12 аргументов</td>
+</tr>
+<tr class="odd">
+<td>myls.sh</td>
+<td>Список каталогов</td>
+</tr>
+<tr class="even">
+<td>count.sh</td>
+<td>5 fichiers .sh</td>
+</tr>
+</tbody>
+</table>
+<h2 id="основные-команды-bash">5. Основные команды Bash</h2>
+<ul>
+<li><code>$#</code> - количество аргументов</li>
+<li><code>$@</code> - все аргументы</li>
+<li><code>$0</code> - имя скрипта</li>
+<li><code>$?</code> - код завершения</li>
+<li><code>-d</code> - проверка каталога</li>
+<li><code>-f</code> - проверка файла</li>
+<li><code>-r</code> - проверка чтения</li>
+<li><code>-w</code> - проверка записи</li>
+<li><code>-x</code> - проверка выполнения</li>
+</ul>
+<h2 id="выводы">6. Выводы</h2>
+<ul>
+<li>Создание резервных копий с помощью tar</li>
+<li>Обработка аргументов командной строки</li>
+<li>Использование циклов for</li>
+<li>Поиск файлов с помощью find</li>
+<li>Проверка прав доступа</li>
+</ul>
+<h2 id="заключение">7. Заключение</h2>
+<p>Лабораторная работа выполнена в полном объёме.</p>

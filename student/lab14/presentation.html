@@ -1,0 +1,43 @@
+<h1 id="лабораторная-работа-14">Лабораторная работа №14</h1>
+<h2 id="цель-работы">1. Цель работы</h2>
+<p>Изучение основ программирования в оболочке ОС UNIX.</p>
+<h2 id="задачи">2. Задачи</h2>
+<ul>
+<li>Реализация механизма семафоров</li>
+<li>Эмуляция команды man</li>
+<li>Генерация случайных последовательностей</li>
+</ul>
+<h2 id="ход-выполнения-работы">3. Ход выполнения работы</h2>
+<h3 id="семафоры-semaphore.sh">3.1. Семафоры (semaphore.sh)</h3>
+<p>```bash #!/bin/bash SEMAPHORE=“/tmp/semaphore.lock” for i in {1..3};
+do while [ -f “<span class="math inline">$SEMAPHORE" ]; do sleep 2;
+done  touch "$</span>SEMAPHORE” echo “Ресурс захвачен” sleep 2 rm -f
+“$SEMAPHORE” done</p>
+<h3 id="эмуляция-man-my_man.sh">3.2. Эмуляция man (my_man.sh)</h3>
+<p>```bash #!/bin/bash zcat “/usr/share/man/man1/$1.1.gz” | head -30</p>
+<h3 id="случайные-буквы-random_letters.sh">3.3. Случайные буквы
+(random_letters.sh)</h3>
+<p>```bash #!/bin/bash for i in $(seq 1 <span
+class="math inline">${1:-10}); do  printf "\\x$</span>(printf “%x” $((97
++ (RANDOM % 26))))” done echo “”</p>
+<h2 id="результаты">4. Результаты</h2>
+<ul>
+<li><strong>semaphore.sh</strong> : 3 цикла успешно</li>
+<li><strong>my_man.sh</strong> : справка ls</li>
+<li><strong>random_letters.sh</strong> : 15-20 случайных букв</li>
+</ul>
+<h2 id="выводы">5. Выводы</h2>
+<ul>
+<li>Освоена работа с семафорами</li>
+<li>Создана эмуляция системных команд</li>
+<li>Изучена генерация случайных чисел</li>
+</ul>
+<h2 id="заключение">6. Заключение</h2>
+<p>Лабораторная работа выполнена в полном объёме.</p>
+<h2 id="список-литературы">7. Список литературы</h2>
+<ul>
+<li>Таненбаум Э., Бос Х. Современные операционные системы. 4-е изд. —
+СПб.: Питер, 2015.</li>
+<li>Bash Reference Manual. GNU Project, 2024.</li>
+<li>Linux Manual Pages. Linux Foundation, 2024.</li>
+</ul>
