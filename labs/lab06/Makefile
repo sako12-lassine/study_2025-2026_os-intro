@@ -16,7 +16,7 @@ report: $(REPORT_PDF) $(REPORT_DOCX)
 presentation: $(PRESENTATION_PDF) $(PRESENTATION_HTML)
 
 %.pdf: %.md
-	pandoc $< -o $@ --pdf-engine=$(PDF_ENGINE) -V mainfont="$(FONT)"
+	pandoc $< -o $@ --pdf-engine=xelatex -V mainfont="DejaVu Sans"
 
 %.docx: %.md
 	pandoc $< -o $@
