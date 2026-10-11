@@ -1,28 +1,21 @@
-REPORT_MD := $(wildcard lab*.md)
-REPORT_PDF := $(REPORT_MD:.md=.pdf)
-REPORT_DOCX := $(REPORT_MD:.md=.docx)
+PANDOC = pandoc
+RESOURCE_PATH = --resource-path=.:report:screenshots:Screenshots:Скриншоты:images
+PDF_OPTIONS = --pdf-engine=xelatex -V mainfont="DejaVu Sans" -V papersize=a4
 
-PRESENTATION_MD := presentation.md
-PRESENTATION_PDF := presentation.pdf
-PRESENTATION_HTML := presentation.html
+REPORT_MD = $(wildcard report/*.md)
+REPORT_DOCX = $(REPORT_MD:.md=.docx)
+REPORT_PDF = $(REPORT_MD:.md=.pdf)
 
-PDF_ENGINE := xelatex
-FONT := DejaVu Sans
+.PHONY: all clean
 
-all: report presentation
+all: $(REPORT_DOCX) $(REPORT_PDF)
+	@echo "Génération des rapports terminée."
 
-report: $(REPORT_PDF) $(REPORT_DOCX)
+report/%.docx: report/%.md
+	$(PANDOC) "$<" $(RESOURCE_PATH) -o "$@"
 
-presentation: $(PRESENTATION_PDF) $(PRESENTATION_HTML)
-
-%.pdf: %.md
-	pandoc $< -o $@ --pdf-engine=xelatex -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono"
-
-%.docx: %.md
-	pandoc $< -o $@
-
-$(PRESENTATION_HTML): $(PRESENTATION_MD)
-	pandoc $< -o $@
+report/%.pdf: report/%.md
+	$(PANDOC) "$<" $(RESOURCE_PATH) $(PDF_OPTIONS) -o "$@"
 
 clean:
-	rm -f $(REPORT_PDF) $(REPORT_DOCX) $(PRESENTATION_PDF) $(PRESENTATION_HTML)
+	@echo "Aucun fichier supprimé."

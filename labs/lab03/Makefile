@@ -1,28 +1,17 @@
-REPORT_MD := $(wildcard lab*.md)
-REPORT_PDF := $(REPORT_MD:.md=.pdf)
-REPORT_DOCX := $(REPORT_MD:.md=.docx)
+PANDOC = pandoc
+RESOURCE_PATH = --resource-path=report:screenshots:.
+PDF_OPTIONS = --pdf-engine=xelatex -V mainfont="DejaVu Sans" -V papersize=a4
 
-PRESENTATION_MD := presentation.md
-PRESENTATION_PDF := presentation.pdf
-PRESENTATION_HTML := presentation.html
+.PHONY: all clean
 
-PDF_ENGINE := xelatex
-FONT := DejaVu Sans
+all: report/lab03.docx report/lab03.pdf
+	@echo "Génération terminée."
 
-all: report presentation
+report/lab03.docx: report/lab03.md
+	$(PANDOC) "$<" $(RESOURCE_PATH) -o "$@"
 
-report: $(REPORT_PDF) $(REPORT_DOCX)
-
-presentation: $(PRESENTATION_PDF) $(PRESENTATION_HTML)
-
-%.pdf: %.md
-	pandoc $< -o $@ --pdf-engine=xelatex -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono"
-
-%.docx: %.md
-	pandoc $< -o $@
-
-$(PRESENTATION_HTML): $(PRESENTATION_MD)
-	pandoc $< -o $@
+report/lab03.pdf: report/lab03.md
+	$(PANDOC) "$<" $(RESOURCE_PATH) $(PDF_OPTIONS) -o "$@"
 
 clean:
-	rm -f $(REPORT_PDF) $(REPORT_DOCX) $(PRESENTATION_PDF) $(PRESENTATION_HTML)
+	@echo "Aucun fichier supprimé."
